@@ -4,11 +4,13 @@ import { connect } from 'react-redux';
 const Header = ({ car }) => {
   return (
     <>
-      <figure className="image is-128x128">
+      <figure className="image is-4by3"> 
+      {/* bulma image, title, subtitle styling */}
+      {/* https://bulma.io/documentation/components/card/  */}
         <img src={car.image} alt={car.name} />
       </figure>
-      <h2>{car.name}</h2>
-      <p>Amount: ${car.price}</p>
+      <h2 className="title is-3">{car.name}</h2>
+      <p className="subtitle is-5">Amount: <span className="title is-3">${car.price}</span></p>
     </>
   );
 };
