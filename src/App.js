@@ -5,7 +5,9 @@ import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
 
-const App = () => {
+import { carReducer } from "./reducers/carReducer";
+
+const App = ({ car, additionalFeatures, additionalPrice }) => {
 
   const removeFeature = item => {
     // dispatch an action here to remove an item
@@ -17,15 +19,15 @@ const App = () => {
 
   return (
     <div className="boxes">
-      <div className="box">
-        <Header />
-        <AddedFeatures />
-      </div>
-      <div className="box">
-        <AdditionalFeatures />
-        <Total />
-      </div>
-    </div>
+				<div className="box">
+					<Header car={car} />
+					<AddedFeatures car={car} />
+				</div>
+				<div className="box">
+					<AdditionalFeatures additionalFeatures={additionalFeatures} />
+					<Total car={car} additionalPrice={additionalPrice} />
+				</div>
+			</div>
   );
 };
 
