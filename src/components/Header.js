@@ -1,15 +1,22 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const Header = props => {
+const Header = ({ car }) => {
   return (
     <>
-      <figure className="image is-128x128">
-        <img src={props.car.image} alt={props.car.name} />
+      <figure className="image is-4by3"> 
+      {/* bulma image, title, subtitle styling */}
+      {/* https://bulma.io/documentation/components/card/  */}
+        <img src={car.image} alt={car.name} />
       </figure>
-      <h2>{props.car.name}</h2>
-      <p>Amount: ${props.car.price}</p>
+      <h2 className="title is-3">{car.name}</h2>
+      <p className="subtitle is-5">Amount: <span className="title is-3">${car.price}</span></p>
     </>
   );
 };
 
-export default Header;
+const mapStateToProps = state => {
+  return { car: state.car };
+};
+
+export default connect(mapStateToProps, {})(Header);
